@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<!-- PREDSTAVITVENI PRIMER (demo) za Inštalacije Boris Oprešnik s.p. Zgrajeno s skillom business-site-builder. -->
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inštalacije Boris Oprešnik s.p. — ogrevanje, vodovod, kopalnice | Kamnica</title>
+<meta name="description" content="Inštalacije Boris Oprešnik s.p., Kamnica: strojne inštalacije, centralno ogrevanje, toplotne črpalke, vodovod in prenova kopalnic na ključ. Več kot 25 let izkušenj, Podravska regija.">
+<style>
+  :root{
+    /* Modra paleta (voda/ogrevanje) z jantarnim poudarkom */
+    --brand-900:#0f2740;
+    --brand-700:#1a4e7e;
+    --brand-600:#2170b4;
+    --brand-500:#3f93d6;
+    --brand-100:#e9f2fb;
+    --accent:#e8912d;
+    --ink:#1c2833;
+    --muted:#5a6b7b;
+    --line:#d9e4ee;
+    /* Preverjene fotografije (brez oseb) */
+    --img-hero:url("https://images.unsplash.com/photo-1650894622076-e09ab837c502?w=1920&q=75&auto=format&fit=crop");
+    --img-band:url("https://images.unsplash.com/photo-1647105604066-86ea4247e217?w=1920&q=75&auto=format&fit=crop");
+    --img-bath:url("https://images.unsplash.com/photo-1643949700215-e61cdca053f7?w=1600&q=72&auto=format&fit=crop");
+    --img-bright:url("https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1600&q=72&auto=format&fit=crop");
+    --img-heat:url("https://images.unsplash.com/photo-1518276779712-dfdcb9daa7a1?w=1600&q=72&auto=format&fit=crop");
+    --img-tiles:url("https://images.unsplash.com/photo-1523350165414-082d792c4bcc?w=1600&q=72&auto=format&fit=crop");
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6;background:#fff;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;background:var(--brand-600);color:#fff;font-weight:600;padding:13px 26px;border-radius:8px;transition:background .2s,transform .2s;cursor:pointer}
+  .btn:hover{background:var(--brand-700);transform:translateY(-1px)}
+  .btn-light{background:#fff;color:var(--brand-700)}
+  .btn-light:hover{background:var(--brand-100)}
+  .btn-ghost{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.4);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.22)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:20px;letter-spacing:.5px;color:var(--brand-700);cursor:pointer}
+  .brand small{display:block;font-size:11px;font-weight:600;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+  .brand .logo{width:40px;height:40px;flex:none}
+  nav ul{display:flex;gap:26px;list-style:none;align-items:center;font-weight:500}
+  nav ul a{transition:color .2s;cursor:pointer}
+  nav ul a:hover{color:var(--brand-600)}
+  nav ul a.active{color:var(--brand-600);font-weight:700}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .nav-phone{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--brand-700)}
+  .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--brand-700)}
+  @media(max-width:880px){
+    .nav{height:64px}
+    .menu-toggle{display:inline-flex}
+    nav ul{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 14px 26px rgba(15,39,64,.12);max-height:0;overflow:hidden;transition:max-height .35s ease}
+    nav ul.open{max-height:380px}
+    nav ul li{width:100%}
+    nav ul a{display:block;padding:15px 24px;border-top:1px solid var(--line)}
+    nav ul li:first-child a{border-top:none}
+    .nav-phone span{display:none}
+  }
+
+  .page{display:none}
+  .page.active{display:block}
+
+  .hero{position:relative;color:#fff;overflow:hidden;background-color:var(--brand-900)}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;background-image:var(--img-hero);background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1);transition:transform 1.6s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,22,38,.62) 0%,rgba(9,22,38,.42) 45%,rgba(9,22,38,.78) 100%)}
+  .hero:hover::before{transform:scale(1.09)}
+  .hero .wrap{position:relative;z-index:2;padding:106px 24px 118px}
+  .hero h1{font-size:clamp(32px,5vw,54px);line-height:1.1;font-weight:800;max-width:18ch;margin-bottom:18px;text-shadow:0 2px 18px rgba(0,0,0,.4)}
+  .hero p{font-size:clamp(17px,2vw,20px);max-width:54ch;opacity:.96;margin-bottom:32px;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .eyebrow{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);padding:6px 14px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.5px;margin-bottom:22px;backdrop-filter:blur(3px)}
+
+  .page-hero{position:relative;color:#fff;overflow:hidden;text-align:center;background-color:var(--brand-900)}
+  .page-hero::after{content:"";position:absolute;inset:0;z-index:0;background-image:var(--ph-img);background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1);transition:transform 1.6s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,22,38,.6),rgba(9,22,38,.76))}
+  .page-hero:hover::after{transform:scale(1.09)}
+  .page-hero .wrap{position:relative;z-index:2;padding:74px 24px}
+  .page-hero .tag{color:var(--brand-500);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:13px}
+  .page-hero h1{font-size:clamp(28px,4vw,44px);font-weight:800;margin:10px 0 12px;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+  .page-hero p{max-width:58ch;margin:0 auto;font-size:17px;opacity:.95}
+  .ph-bath{--ph-img:var(--img-bath)}
+  .ph-bright{--ph-img:var(--img-bright)}
+  .ph-heat{--ph-img:var(--img-heat)}
+  .ph-tiles{--ph-img:var(--img-tiles)}
+
+  section.block{padding:80px 0}
+  .soft{background:var(--brand-100)}
+  .section-head{text-align:center;max-width:660px;margin:0 auto 46px}
+  .section-head .tag{color:var(--brand-600);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:13px}
+  .section-head h2{font-size:clamp(24px,3.2vw,36px);font-weight:800;margin:10px 0 12px;color:var(--brand-900)}
+  .section-head p{color:var(--muted);font-size:17px}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:880px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 26px;transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,39,64,.10)}
+  .card .ico{width:52px;height:52px;border-radius:12px;background:var(--brand-100);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:26px}
+  .card h3{font-size:19px;margin-bottom:10px;color:var(--brand-900)}
+  .card p{color:var(--muted);font-size:15.5px}
+
+  .photo-frame{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(15,39,64,.18);background:var(--brand-100)}
+  .photo-inner{width:100%;height:100%;transition:transform .14s linear;will-change:transform}
+  .photo-frame img{width:100%;height:100%;object-fit:cover;transform:scale(1);transition:transform 1.6s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .photo-frame:hover img{transform:scale(1.09)}
+
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:880px){.feat{grid-template-columns:1fr;gap:30px}}
+  .feat a{display:block;color:inherit}
+  .feat .photo-frame{aspect-ratio:4/3;margin-bottom:16px}
+  .feat h3{font-size:19px;color:var(--brand-900);margin-bottom:6px}
+  .feat p{color:var(--muted);font-size:15px}
+  .feat .more{display:inline-block;margin-top:10px;color:var(--brand-600);font-weight:700;font-size:14.5px}
+
+  .media{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  @media(max-width:880px){.media{grid-template-columns:1fr;gap:30px}}
+  .media .photo-frame{aspect-ratio:4/3}
+  .media h2{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--brand-900);margin-bottom:14px}
+  .media p{color:var(--muted);font-size:16.5px;margin-bottom:18px}
+
+  .band{position:relative;color:#fff;overflow:hidden;text-align:center;background:var(--brand-900)}
+  .band-bg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(9,22,38,.7),rgba(9,22,38,.7)),var(--img-band);background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1);transition:transform 1.6s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .band:hover .band-bg{transform:scale(1.09)}
+  .band .wrap{position:relative;z-index:2;padding:96px 24px}
+  .band h2{font-size:clamp(26px,3.6vw,40px);font-weight:800;margin-bottom:14px;max-width:22ch;margin-left:auto;margin-right:auto;text-shadow:0 2px 16px rgba(0,0,0,.45)}
+  .band p{max-width:58ch;margin:0 auto 28px;opacity:.95;font-size:17px}
+
+  .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+  @media(max-width:720px){.mini{grid-template-columns:1fr}}
+  .mini .item b{display:block;color:var(--brand-700);font-weight:800;font-size:18px;margin-bottom:6px}
+  .mini .item p{color:var(--muted);font-size:15px}
+
+  /* Slogan */
+  .motto{font-size:clamp(18px,2.2vw,22px);font-weight:700;font-style:italic;color:#fff;opacity:.96;margin:0 0 22px;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+
+  /* Mnenja strank */
+  .reviews-head{text-align:center;max-width:640px;margin:0 auto 40px}
+  .reviews-head .rtag{color:var(--brand-600);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:13px}
+  .ratings{display:flex;gap:44px;justify-content:center;flex-wrap:wrap;margin:14px 0 12px}
+  .rbadge{display:flex;flex-direction:column;align-items:center}
+  .rbadge .score{display:flex;align-items:baseline;gap:5px}
+  .rbadge .score b{font-size:44px;font-weight:800;color:var(--brand-700);line-height:1}
+  .rbadge .score span{font-size:16px;color:var(--muted);font-weight:600}
+  .rbadge .stars{color:#f0a92b;font-size:16px;letter-spacing:2px;margin:6px 0 4px;min-height:18px}
+  .rbadge small{color:var(--muted);font-size:12.5px}
+  .reviews-head p{color:var(--muted);font-size:16px}
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:880px){.reviews{grid-template-columns:1fr}}
+  .review{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:12px}
+  .review .stars{color:#f0a92b;letter-spacing:2px;font-size:15px}
+  .review p{color:var(--ink);font-size:15.5px;font-style:italic}
+  .review .who{margin-top:auto;font-size:13.5px;color:var(--muted)}
+  .review .who b{color:var(--brand-900);font-style:normal;display:block;margin-bottom:2px}
+  .src-note{text-align:center;margin-top:28px;color:var(--muted);font-size:13.5px}
+  .src-note a{color:var(--brand-600);font-weight:600}
+
+  .about{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media(max-width:880px){.about{grid-template-columns:1fr;gap:34px}}
+  .about h2{font-size:clamp(24px,3.2vw,34px);font-weight:800;margin-bottom:18px;color:var(--brand-900)}
+  .about p{color:var(--muted);margin-bottom:16px;font-size:16.5px}
+  .about .photo-frame{aspect-ratio:4/3}
+  .stats{display:flex;gap:34px;margin-top:26px;flex-wrap:wrap}
+  .stats div b{display:block;font-size:28px;color:var(--brand-700);font-weight:800}
+  .stats div small{color:var(--muted);font-weight:600}
+
+  .why{background:var(--brand-900);color:#fff}
+  .why .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+  @media(max-width:880px){.why .grid4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.why .grid4{grid-template-columns:1fr}}
+  .why h4{font-size:17px;margin-bottom:8px}
+  .why p{opacity:.82;font-size:14.5px}
+  .why .num{color:var(--accent);font-weight:800;font-size:15px;letter-spacing:1px}
+
+  .contact{background:#fbfdff}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  @media(max-width:880px){.contact-grid{grid-template-columns:1fr;gap:32px}}
+  .info-row{display:flex;gap:15px;margin-bottom:22px;align-items:flex-start}
+  .info-row .ico{width:44px;height:44px;flex:none;border-radius:10px;background:var(--brand-100);display:flex;align-items:center;justify-content:center;font-size:20px}
+  .info-row b{display:block;color:var(--brand-900)}
+  .info-row span{color:var(--muted)}
+  form label{display:block;font-weight:600;font-size:14px;margin:0 0 6px;color:var(--brand-900)}
+  form input,form textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:9px;font:inherit;margin-bottom:16px;background:#fff}
+  form input:focus,form textarea:focus{outline:2px solid var(--brand-500);border-color:transparent}
+
+  footer{background:var(--brand-900);color:rgba(255,255,255,.85);padding:44px 0 26px;font-size:14.5px}
+  .foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.14)}
+  .foot-brand{font-weight:800;font-size:19px;color:#fff;letter-spacing:.5px}
+  .foot-links{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+  .foot-links a{opacity:.85;cursor:pointer}
+  .foot-links a:hover{opacity:1;color:#fff}
+  .foot-bottom{padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;opacity:.7;font-size:13px}
+  svg{display:block}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+  .reveal.is-visible{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none}
+    .photo-inner{transform:none !important}
+    .photo-frame img{transform:none !important;transition:none}
+    .band-bg{transform:none !important;transition:none}
+    .hero::before,.page-hero::after{transform:none !important;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" data-nav="domov">
+      <svg class="logo" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="24" fill="#e9f2fb"/>
+        <path d="M24 11 C24 11 15 22 15 29 a9 9 0 0 0 18 0 C33 22 24 11 24 11 Z" fill="#2170b4"/>
+        <path d="M20 29 a4 4 0 0 0 4 4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>INŠTALACIJE OPREŠNIK<small>Boris Oprešnik s.p.</small></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#domov">Domov</a></li>
+        <li><a href="#storitve">Storitve</a></li>
+        <li><a href="#o-nas">O nas</a></li>
+        <li><a href="#zakaj">Zakaj mi</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:+38640511585">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a4e7e" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        <span>040 511 585</span>
+      </a>
+      <button class="menu-toggle" aria-label="Odpri meni" aria-expanded="false" aria-controls="glavni-meni">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ DOMOV ============ -->
+<section class="page" data-page="domov">
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">Kamnica &middot; Podravska &middot; več kot 25 let izkušenj</span>
+      <h1 class="reveal">Strojne inštalacije, ogrevanje in kopalnice na ključ</h1>
+      <p class="motto reveal">„Vse za vas pri enem mojstru.“</p>
+      <p class="reveal">Boris Oprešnik s.p. izvaja celotne strojne inštalacije, centralno ogrevanje in prenove kopalnic, od rušenja do zadnje ploščice. Kakovostni materiali, osebni pristop in zanesljiva izvedba.</p>
+      <div class="cta reveal">
+        <a class="btn btn-light" href="tel:+38640511585">Pokličite: 040 511 585</a>
+        <a class="btn btn-ghost" href="#storitve">Naše storitve</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="tag reveal">Dobrodošli</div>
+        <h2 class="reveal">Vaš mojster za inštalacije in kopalnice</h2>
+        <p class="reveal">Že vrsto let urejamo ogrevanje, vodovod in kopalnice pri strankah v Kamnici in širši Podravski regiji. Projekt prevzamemo v celoti, od načrta do čiste, dokončane kopalnice.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block soft">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="tag reveal">Področja dela</div>
+        <h2 class="reveal">Kaj počnemo</h2>
+        <p class="reveal">Kratek pregled. Vse storitve najdete v zavihku Storitve.</p>
+      </div>
+      <div class="feat">
+        <a href="#storitve" class="reveal">
+          <div class="photo-frame alive"><div class="photo-inner"><img src="https://images.unsplash.com/photo-1643949700215-e61cdca053f7?w=760&q=70&auto=format&fit=crop" alt="Prenovljena kopalnica"></div></div>
+          <h3>Prenova kopalnic</h3>
+          <p>Celovite prenove in nove kopalnice na ključ, keramika in sanitarna oprema.</p>
+          <span class="more">Več &rarr;</span>
+        </a>
+        <a href="#storitve" class="reveal">
+          <div class="photo-frame alive"><div class="photo-inner"><img src="https://images.unsplash.com/photo-1518276779712-dfdcb9daa7a1?w=760&q=70&auto=format&fit=crop" alt="Radiator in ogrevanje"></div></div>
+          <h3>Ogrevanje in toplotne črpalke</h3>
+          <p>Centralno ogrevanje, talno gretje, radiatorji in toplotne črpalke zrak-voda.</p>
+          <span class="more">Več &rarr;</span>
+        </a>
+        <a href="#storitve" class="reveal">
+          <div class="photo-frame alive"><div class="photo-inner"><img src="https://images.unsplash.com/photo-1625123817473-eede237e097b?w=760&q=70&auto=format&fit=crop" alt="Inštalacijski material"></div></div>
+          <h3>Vodovod in inštalacije</h3>
+          <p>Vodovod, kanalizacija, strojne inštalacije in kotlovnice.</p>
+          <span class="more">Več &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band-bg"></div>
+    <div class="wrap">
+      <h2 class="reveal">Od ogrevanja do kopalnice na ključ, vse na enem mestu</h2>
+      <p class="reveal">En izvajalec za celoten projekt: manj usklajevanja za vas in čist, zanesljiv rezultat.</p>
+      <div class="reveal"><a class="btn btn-light" href="#kontakt">Povprašajte za ponudbo</a></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="tag reveal">Zakaj mi</div>
+        <h2 class="reveal">Na kratko o nas</h2>
+      </div>
+      <div class="mini">
+        <div class="item reveal"><b>25+ let izkušenj</b><p>Boris ima za seboj več kot 25 let dela na terenu.</p></div>
+        <div class="item reveal"><b>Na ključ</b><p>Prevzamemo celoten projekt, od rušenja do končne izvedbe.</p></div>
+        <div class="item reveal"><b>Odzivni in zanesljivi</b><p>Hitra odzivnost in kvaliteta, po kateri nas stranke priporočajo.</p></div>
+      </div>
+      <div class="section-head" style="margin:40px auto 0">
+        <div class="reveal"><a class="btn" href="#zakaj">Več o tem, zakaj mi</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mnenja strank (povzeto z javnih profilov na zunanjih portalih) -->
+  <section class="block soft">
+    <div class="wrap">
+      <div class="reviews-head reveal">
+        <div class="rtag">Mnenja strank</div>
+        <div class="ratings">
+          <div class="rbadge"><div class="score"><b>5,0</b><span>/ 5</span></div><div class="stars">★★★★★</div><small>Omisli.si &middot; 5 ocen</small></div>
+          <div class="rbadge"><div class="score"><b>9,8</b><span>/ 10</span></div><div class="stars">&nbsp;</div><small>Mojmojster &middot; odlična ocena</small></div>
+        </div>
+        <p>Ocene strank z neodvisnih portalov. Nekaj mnenj, ki so jih zapustile stranke:</p>
+      </div>
+      <div class="reviews">
+        <div class="review reveal"><div class="stars">★★★★★</div><p>„Cevi so bile postavljene tako, kot mora biti, oziroma po naših željah. Prišel je tako, kot je rekel.“</p><div class="who"><b>Aleš B.</b>17. feb. 2026 &middot; Omisli.si</div></div>
+        <div class="review reveal"><div class="stars">★★★★★</div><p>„Zadovoljna z opravljenim delom, odzivnost hitra, priporočam.“</p><div class="who"><b>Marinka Z.</b>5. feb. 2026 &middot; Omisli.si</div></div>
+        <div class="review reveal"><div class="stars">★★★★★</div><p>„Montiral je bojler, prišel pravočasno, delo opravil v predvidenem času, bojler dela.“</p><div class="who"><b>Simon Z.</b>4. feb. 2026 &middot; Omisli.si</div></div>
+        <div class="review reveal"><div class="stars">★★★★★</div><p>„Hitrost in kvaliteta.“</p><div class="who"><b>Dušan L.</b>7. jan. 2026 &middot; Omisli.si</div></div>
+        <div class="review reveal"><div class="stars">★★★★★</div><p>„Zelo smo zadovoljni z opravljeno storitvijo, predvsem s hitrostjo in odzivnostjo. Priporočamo!“</p><div class="who"><b>Simona T.</b>25. okt. 2023 &middot; Omisli.si</div></div>
+        <div class="review reveal"><div class="stars">★★★★★</div><p>„Prenova kopalnice z Borisom je bila izvrstna izkušnja. Delo natančno in dobro opravljeno, cene poštene in dostopne. Zanesljiv in prijazen, toplo priporočam!“</p><div class="who"><b>Borut U.</b>Primerjam.si</div></div>
+      </div>
+      <p class="src-note reveal">Ocene in mnenja so povzeti z javnih profilov na <a href="https://omisli.si/boris-opresnik-sp/" target="_blank" rel="noopener">Omisli.si</a>, <a href="https://www.mojmojster.net/izvajalec/instalacije-opresnik" target="_blank" rel="noopener">Mojmojster.net</a> in <a href="https://www.primerjam.si/" target="_blank" rel="noopener">Primerjam.si</a>.</p>
+    </div>
+  </section>
+</section>
+
+<!-- ============ STORITVE ============ -->
+<section class="page" data-page="storitve">
+  <div class="page-hero ph-bright">
+    <div class="wrap">
+      <div class="tag reveal">Kaj ponujamo</div>
+      <h1 class="reveal">Naše storitve</h1>
+      <p class="reveal">Celovita izvedba strojnih inštalacij, ogrevanja in kopalnic, prilagojena vašemu objektu.</p>
+    </div>
+  </div>
+  <section class="block soft">
+    <div class="wrap">
+      <div class="grid">
+        <div class="card reveal"><div class="ico">🛁</div><h3>Prenova kopalnic</h3><p>Celotna prenova in nove kopalnice na ključ: rušenje, vodovod, keramika in montaža sanitarne opreme.</p></div>
+        <div class="card reveal"><div class="ico">♨️</div><h3>Ogrevanje in toplotne črpalke</h3><p>Centralno ogrevanje, radiatorji, toplotne črpalke zrak-voda ter kotli na pelete, plin ali olje.</p></div>
+        <div class="card reveal"><div class="ico">🌡️</div><h3>Talno gretje</h3><p>Vodno in električno talno gretje s sistemskimi ploščami, za bivalne prostore in sanitarije.</p></div>
+        <div class="card reveal"><div class="ico">🔧</div><h3>Strojne inštalacije</h3><p>Kotlovnice pri novogradnji in modernizacije, hidravlično uravnoteženje in montaža centralnega ogrevanja.</p></div>
+        <div class="card reveal"><div class="ico">🚰</div><h3>Vodovod in popravila</h3><p>Vodovod, kanalizacija, priklopi (bojler, pralni stroj), menjava radiatorjev in manjša popravila.</p></div>
+        <div class="card reveal"><div class="ico">🧱</div><h3>Keramika in ploščice</h3><p>Talna in stenska keramika za kopalnice, terase in balkone ter obnova fug.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="block">
+    <div class="wrap media">
+      <div class="photo-frame alive reveal"><div class="photo-inner"><img src="https://images.unsplash.com/photo-1650894622076-e09ab837c502?w=900&q=72&auto=format&fit=crop" alt="Elegantna kopalnica z marmorno keramiko"></div></div>
+      <div class="reveal">
+        <h2>Celoten projekt pri enem mojstru</h2>
+        <p>Od rušitve stare kopalnice do zadnje fuge poskrbimo za vse. Svetujemo tudi pri načrtovanju in izbiri materialov, tako da je izvedba usklajena in brez zapletov.</p>
+        <a class="btn" href="#kontakt">Povprašajte za ponudbo</a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ O NAS ============ -->
+<section class="page" data-page="o-nas">
+  <div class="page-hero ph-bath">
+    <div class="wrap">
+      <div class="tag reveal">Kdo smo</div>
+      <h1 class="reveal">O nas</h1>
+      <p class="reveal">Domača obrt iz Kamnice z več kot 25 leti izkušenj.</p>
+    </div>
+  </div>
+  <section class="block">
+    <div class="wrap about">
+      <div class="reveal">
+        <h2>Osebno delo, na katero se lahko zanesete</h2>
+        <p>Inštalacije vodi Boris Oprešnik iz Kamnice. Kot samostojni podjetnik deluje od leta 2013, za seboj pa ima več kot 25 let izkušenj s strojnimi inštalacijami, ogrevanjem in kopalnicami.</p>
+        <p>Delo opravljamo osebno in natančno, s kakovostnimi materiali in poštenim odnosom. Za vsak projekt poskrbimo v celoti, zato veste, na koga se lahko obrnete in kaj lahko pričakujete.</p>
+        <p>Poleg osnovnih del ob prenovah nudimo tudi notranja gradbena dela (prestavitev sten, pleskarska dela) in svetovanje strankam. Zato naš slogan pravi: <b>„Vse za vas pri enem mojstru.“</b></p>
+        <div class="stats">
+          <div><b>25+</b><small>let izkušenj</small></div>
+          <div><b>2013</b><small>obrt od tega leta</small></div>
+          <div><b>Podravska</b><small>Kamnica in okolica</small></div>
+        </div>
+      </div>
+      <div class="photo-frame alive reveal"><div class="photo-inner"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1000&q=72&auto=format&fit=crop" alt="Prenovljena kopalnica"></div></div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ ZAKAJ MI ============ -->
+<section class="page" data-page="zakaj">
+  <div class="page-hero ph-heat">
+    <div class="wrap">
+      <div class="tag reveal">Zakaj Oprešnik</div>
+      <h1 class="reveal">Na kaj se lahko zanesete</h1>
+    </div>
+  </div>
+  <section class="block">
+    <div class="wrap media">
+      <div class="photo-frame alive reveal"><div class="photo-inner"><img src="https://images.unsplash.com/photo-1647105604066-86ea4247e217?w=900&q=72&auto=format&fit=crop" alt="Strojne inštalacije"></div></div>
+      <div class="reveal">
+        <h2>Kakovost, ki se vidi in traja</h2>
+        <p>Delamo s preverjenimi materiali in po pravilih stroke. Rezultat je zanesljiv sistem ogrevanja in kopalnica, ki bo lepa in brezhibna še čez leta.</p>
+      </div>
+    </div>
+  </section>
+  <section class="block why">
+    <div class="wrap">
+      <div class="grid4">
+        <div class="reveal"><div class="num">01</div><h4>Izkušnje</h4><p>Več kot 25 let dela na terenu z inštalacijami, ogrevanjem in kopalnicami.</p></div>
+        <div class="reveal"><div class="num">02</div><h4>Na ključ</h4><p>Celoten projekt pri enem izvajalcu, brez usklajevanja več mojstrov.</p></div>
+        <div class="reveal"><div class="num">03</div><h4>Kakovostni materiali</h4><p>Vgrajujemo preverjene materiale in opremo priznanih znamk.</p></div>
+        <div class="reveal"><div class="num">04</div><h4>Odzivnost</h4><p>Hitro se odzovemo in delo opravimo v dogovorjenem roku.</p></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="page" data-page="kontakt">
+  <div class="page-hero ph-tiles">
+    <div class="wrap">
+      <div class="tag reveal">Stopite v stik</div>
+      <h1 class="reveal">Kontakt</h1>
+      <p class="reveal">Pokličite ali pišite, pa se dogovorimo za ogled in ponudbo.</p>
+    </div>
+  </div>
+  <section class="block contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="info-row">
+            <div class="ico">☎</div>
+            <div><b>Telefon</b><span><a href="tel:+38640511585">040 511 585</a></span></div>
+          </div>
+          <div class="info-row">
+            <div class="ico">✉</div>
+            <div><b>E-pošta</b><span><a href="mailto:borisopresnik@siol.net">borisopresnik@siol.net</a></span></div>
+          </div>
+          <div class="info-row">
+            <div class="ico">📍</div>
+            <div><b>Naslov</b><span>Kamniška graba 76, 2351 Kamnica</span></div>
+          </div>
+          <div class="info-row">
+            <div class="ico">🕒</div>
+            <div><b>Delovni čas</b><span>Po dogovoru</span></div>
+          </div>
+          <div class="info-row">
+            <div class="ico">🗺️</div>
+            <div><b>Območje dela</b><span>Kamnica in Podravska regija</span></div>
+          </div>
+        </div>
+        <form class="reveal" action="mailto:borisopresnik@siol.net" method="post" enctype="text/plain">
+          <label for="ime">Ime in priimek</label>
+          <input type="text" id="ime" name="Ime" placeholder="Vaše ime">
+          <label for="tel">Telefon</label>
+          <input type="tel" id="tel" name="Telefon" placeholder="Vaša telefonska številka">
+          <label for="msg">Sporočilo</label>
+          <textarea id="msg" name="Sporocilo" rows="4" placeholder="Kratek opis del (npr. prenova kopalnice, menjava ogrevanja)"></textarea>
+          <button type="submit" class="btn" style="width:100%;border:none;font-size:16px">Pošlji povpraševanje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">INŠTALACIJE OPREŠNIK</div>
+        <p style="margin-top:6px;opacity:.8">Strojne inštalacije, ogrevanje in prenova kopalnic<br>Boris Oprešnik s.p. &middot; obrt od leta 2013</p>
+      </div>
+      <div class="foot-links">
+        <a href="#domov">Domov</a>
+        <a href="#storitve">Storitve</a>
+        <a href="#o-nas">O nas</a>
+        <a href="#zakaj">Zakaj mi</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Inštalacije Boris Oprešnik s.p., Kamnica. Vse pravice pridržane.</span>
+      <span>Predstavitveni primer spletne strani</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav ul a'));
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var valid = pages.map(function(p){ return p.dataset.page; });
+  var toggle = document.querySelector('.menu-toggle');
+  var menu = document.querySelector('nav ul');
+
+  function reveal(page){
+    var els = page.querySelectorAll('.reveal');
+    if(reduceMotion){ els.forEach(function(el){ el.classList.add('is-visible'); }); return; }
+    els.forEach(function(el,i){ el.classList.remove('is-visible'); el.style.transitionDelay = (i * 0.06) + 's'; });
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ els.forEach(function(el){ el.classList.add('is-visible'); }); }); });
+  }
+  function updateAlive(){
+    if(reduceMotion) return;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var active = document.querySelector('.page.active'); if(!active) return;
+    active.querySelectorAll('.photo-frame.alive').forEach(function(frame){
+      var inner = frame.querySelector('.photo-inner'); if(!inner) return;
+      var r = frame.getBoundingClientRect();
+      if(r.bottom < -80 || r.top > vh + 80) return;
+      var center = r.top + r.height / 2;
+      var d = (center - vh / 2) / vh;
+      var prox = 1 - Math.min(Math.abs(d) * 1.8, 1);
+      var scale = 1.04 + prox * 0.07;
+      var ty = d * 16;
+      inner.style.transform = 'translateY(' + ty.toFixed(1) + 'px) scale(' + scale.toFixed(3) + ')';
+    });
+  }
+  var ticking = false;
+  function onScroll(){ if(!ticking){ window.requestAnimationFrame(function(){ updateAlive(); ticking = false; }); ticking = true; } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+
+  function showPage(id){
+    if(valid.indexOf(id) === -1){ id = valid[0]; }
+    pages.forEach(function(p){ p.classList.toggle('active', p.dataset.page === id); });
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+    window.scrollTo(0, 0);
+    var active = document.querySelector('.page.active'); if(active){ reveal(active); }
+    updateAlive();
+    if(menu){ menu.classList.remove('open'); }
+    if(toggle){ toggle.setAttribute('aria-expanded','false'); }
+    document.title = (id === 'domov' ? '' : (id.charAt(0).toUpperCase() + id.slice(1).replace('-',' ') + ' - ')) + 'Inštalacije Boris Oprešnik s.p.';
+  }
+  if(toggle && menu){
+    menu.id = menu.id || 'glavni-meni';
+    toggle.addEventListener('click', function(){ var open = menu.classList.toggle('open'); toggle.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+  }
+  var brand = document.querySelector('.brand');
+  if(brand){ brand.addEventListener('click', function(e){ e.preventDefault(); location.hash = valid[0]; }); }
+  window.addEventListener('hashchange', function(){ showPage((location.hash || '#'+valid[0]).replace('#','')); });
+  showPage((location.hash || '#'+valid[0]).replace('#',''));
+  setTimeout(updateAlive, 300);
+})();
+</script>
+
+</body>
+</html>
