@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- PREDSTAVITVENI PRIMER (demo) za Inštalacije Boris Oprešnik s.p. Zgrajeno s skillom business-site-builder. -->
 <html lang="sl">
 <head>
@@ -7,7 +7,7 @@
 <title>Inštalacije Boris Oprešnik s.p. — ogrevanje, vodovod, kopalnice | Kamnica</title>
 <meta name="description" content="Inštalacije Boris Oprešnik s.p., Kamnica: strojne inštalacije, centralno ogrevanje, toplotne črpalke, vodovod in prenova kopalnic na ključ. Več kot 25 let izkušenj, Podravska regija.">
 <!-- Prednaloži glavno sliko, da se ozadje pokaže hitro (manj modrega utripa ob nalaganju) -->
-<link rel="preload" as="image" href="images/kopalnica-marmor.jpg">
+<link rel="preload" as="image" href="images/kopalnica-marmor.jpg" fetchpriority="high">
 <style>
   :root{
     /* Modra paleta (voda/ogrevanje) z jantarnim poudarkom */
@@ -69,7 +69,7 @@
   .page{display:none}
   .page.active{display:block}
 
-  .hero{position:relative;color:#fff;overflow:hidden;background-color:var(--brand-900)}
+  .hero{position:relative;color:#fff;overflow:hidden;background-color:#091626}
   .hero::before{content:"";position:absolute;inset:0;z-index:0;background-image:var(--img-hero);background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1);transition:transform 1.6s cubic-bezier(.22,.61,.36,1);will-change:transform}
   .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,22,38,.62) 0%,rgba(9,22,38,.42) 45%,rgba(9,22,38,.78) 100%)}
   .hero:hover::before{transform:scale(1.09)}
@@ -79,7 +79,7 @@
   .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
   .eyebrow{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);padding:6px 14px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.5px;margin-bottom:22px;backdrop-filter:blur(3px)}
 
-  .page-hero{position:relative;color:#fff;overflow:hidden;text-align:center;background-color:var(--brand-900)}
+  .page-hero{position:relative;color:#fff;overflow:hidden;text-align:center;background-color:#091626}
   .page-hero::after{content:"";position:absolute;inset:0;z-index:0;background-image:var(--ph-img);background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1);transition:transform 1.6s cubic-bezier(.22,.61,.36,1);will-change:transform}
   .page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,22,38,.6),rgba(9,22,38,.76))}
   .page-hero:hover::after{transform:scale(1.09)}
@@ -201,8 +201,11 @@
 
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
   .reveal.is-visible{opacity:1;transform:none}
+  .reveal-scroll{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+  .reveal-scroll.is-visible{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){
     .reveal{opacity:1 !important;transform:none !important;transition:none}
+    .reveal-scroll{opacity:1 !important;transform:none !important;transition:none}
     .photo-inner{transform:none !important}
     .photo-frame img{transform:none !important;transition:none}
     .band-bg{transform:none !important;transition:none}
@@ -251,8 +254,8 @@
     <div class="wrap">
       <span class="eyebrow reveal">Kamnica &middot; Podravska &middot; več kot 25 let izkušenj</span>
       <h1 class="reveal">Strojne inštalacije, ogrevanje in kopalnice na ključ</h1>
-      <p class="motto reveal">„Vse za vas pri enem mojstru.“</p>
-      <p class="reveal">Boris Oprešnik s.p. izvaja celotne strojne inštalacije, centralno ogrevanje in prenove kopalnic, od rušenja do zadnje ploščice. Kakovostni materiali, osebni pristop in zanesljiva izvedba.</p>
+      <p class="motto reveal">Vse za vas pri enem mojstru!</p>
+      <p class="reveal">Izvajamo celotne strojne inštalacije, centralno ogrevanje in prenove kopalnic, od rušenja do zadnje ploščice. Kakovostni materiali, osebni pristop in zanesljiva izvedba.</p>
       <div class="cta reveal">
         <a class="btn btn-light" href="tel:+38640511585">Pokličite: 040 511 585</a>
         <a class="btn btn-ghost" href="#storitve">Naše storitve</a>
@@ -265,7 +268,7 @@
       <div class="section-head">
         <div class="tag reveal">Dobrodošli</div>
         <h2 class="reveal">Vaš mojster za inštalacije in kopalnice</h2>
-        <p class="reveal">Že vrsto let urejamo ogrevanje, vodovod in kopalnice pri strankah v Kamnici in širši Podravski regiji. Projekt prevzamemo v celoti, od načrta do čiste, dokončane kopalnice.</p>
+        <p class="reveal">Že vrsto let urejamo ogrevanje, vodovod in kopalnice pri strankah v širši Podravski regiji. Projekt prevzamemo v celoti, od načrta do dokončane, čiste kopalnice.</p>
       </div>
     </div>
   </section>
@@ -275,7 +278,6 @@
       <div class="section-head">
         <div class="tag reveal">Področja dela</div>
         <h2 class="reveal">Kaj počnemo</h2>
-        <p class="reveal">Kratek pregled. Vse storitve najdete v zavihku Storitve.</p>
       </div>
       <div class="feat">
         <a href="#storitve" class="reveal">
@@ -297,6 +299,7 @@
           <span class="more">Več &rarr;</span>
         </a>
       </div>
+      <p class="reveal" style="text-align:center;margin-top:28px;color:var(--muted);font-size:15.5px">Več o naših storitvah najdete v zavihku <a href="#storitve" style="color:var(--brand-600);font-weight:700">Storitve</a>.</p>
     </div>
   </section>
 
@@ -304,7 +307,7 @@
     <div class="band-bg"></div>
     <div class="wrap">
       <h2 class="reveal">Od ogrevanja do kopalnice na ključ, vse na enem mestu</h2>
-      <p class="reveal">En izvajalec za celoten projekt: manj usklajevanja za vas in čist, zanesljiv rezultat.</p>
+      <p class="reveal">En izvajalec za celoten projekt: manj usklajevanja za vas in zanesljiv, kvaliteten rezultat.</p>
       <div class="reveal"><a class="btn btn-light" href="#kontakt">Povprašajte za ponudbo</a></div>
     </div>
   </section>
@@ -316,9 +319,9 @@
         <h2 class="reveal">Na kratko o nas</h2>
       </div>
       <div class="mini">
-        <div class="item reveal"><b>25+ let izkušenj</b><p>Boris ima za seboj več kot 25 let dela na terenu.</p></div>
+        <div class="item reveal"><b>25+ let izkušenj</b><p>Boris Oprešnik s.p. ima za seboj več kot 25 let dela na terenu.</p></div>
         <div class="item reveal"><b>Na ključ</b><p>Prevzamemo celoten projekt, od rušenja do končne izvedbe.</p></div>
-        <div class="item reveal"><b>Odzivni in zanesljivi</b><p>Hitra odzivnost in kvaliteta, po kateri nas stranke priporočajo.</p></div>
+        <div class="item reveal"><b>Odzivni in zanesljivi</b><p>Hitra odzivnost in kvaliteta, zaradi katere nas stranke priporočajo.</p></div>
       </div>
       <div class="section-head" style="margin:40px auto 0">
         <div class="reveal"><a class="btn" href="#zakaj">Več o tem, zakaj mi</a></div>
@@ -327,7 +330,7 @@
   </section>
 
   <!-- Mnenja strank (povzeto z javnih profilov na zunanjih portalih) -->
-  <section class="block soft">
+  <section class="block" style="background:#c8dcf0">
     <div class="wrap">
       <div class="reviews-head reveal">
         <div class="rtag">Mnenja strank</div>
@@ -335,17 +338,17 @@
           <div class="rbadge"><div class="score"><b>5,0</b><span>/ 5</span></div><div class="stars">★★★★★</div><small>Omisli.si &middot; 5 ocen</small></div>
           <div class="rbadge"><div class="score"><b>9,8</b><span>/ 10</span></div><div class="stars">&nbsp;</div><small>Mojmojster &middot; odlična ocena</small></div>
         </div>
-        <p>Ocene strank z neodvisnih portalov. Nekaj mnenj, ki so jih zapustile stranke:</p>
+        <p>Ocene in mnenja, ki so jih stranke pustile na javnih spletnih portalih:</p>
       </div>
       <div class="reviews">
-        <div class="review reveal"><div class="stars">★★★★★</div><p>„Cevi so bile postavljene tako, kot mora biti, oziroma po naših željah. Prišel je tako, kot je rekel.“</p><div class="who"><b>Aleš B.</b>17. feb. 2026 &middot; Omisli.si</div></div>
-        <div class="review reveal"><div class="stars">★★★★★</div><p>„Zadovoljna z opravljenim delom, odzivnost hitra, priporočam.“</p><div class="who"><b>Marinka Z.</b>5. feb. 2026 &middot; Omisli.si</div></div>
-        <div class="review reveal"><div class="stars">★★★★★</div><p>„Montiral je bojler, prišel pravočasno, delo opravil v predvidenem času, bojler dela.“</p><div class="who"><b>Simon Z.</b>4. feb. 2026 &middot; Omisli.si</div></div>
-        <div class="review reveal"><div class="stars">★★★★★</div><p>„Hitrost in kvaliteta.“</p><div class="who"><b>Dušan L.</b>7. jan. 2026 &middot; Omisli.si</div></div>
-        <div class="review reveal"><div class="stars">★★★★★</div><p>„Zelo smo zadovoljni z opravljeno storitvijo, predvsem s hitrostjo in odzivnostjo. Priporočamo!“</p><div class="who"><b>Simona T.</b>25. okt. 2023 &middot; Omisli.si</div></div>
-        <div class="review reveal"><div class="stars">★★★★★</div><p>„Prenova kopalnice z Borisom je bila izvrstna izkušnja. Delo natančno in dobro opravljeno, cene poštene in dostopne. Zanesljiv in prijazen, toplo priporočam!“</p><div class="who"><b>Borut U.</b>Primerjam.si</div></div>
+        <div class="review reveal-scroll" style="background:#fff;border:1px solid #b0c8e0;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 6px 24px rgba(15,39,64,.15)"><div class="stars">★★★★★</div><p>„Zadovoljna z opravljenim delom, odzivnost hitra, priporočam."</p><div class="who"><b>Marinka Z.</b><br>5. feb. 2026 &middot; Omisli.si</div></div>
+        <div class="review reveal-scroll" style="background:#fff;border:1px solid #b0c8e0;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 6px 24px rgba(15,39,64,.15)"><div class="stars">★★★★★</div><p>„Hitrost in kvaliteta."</p><div class="who"><b>Dušan L.</b><br>7. jan. 2026 &middot; Omisli.si</div></div>
+        <div class="review reveal-scroll" style="background:#fff;border:1px solid #b0c8e0;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 6px 24px rgba(15,39,64,.15)"><div class="stars">★★★★★</div><p>„Zelo smo zadovoljni z opravljeno storitvijo, predvsem s hitrostjo in odzivnostjo. Priporočamo!"</p><div class="who"><b>Simona T.</b><br>25. okt. 2023 &middot; Omisli.si</div></div>
+        <div class="review reveal-scroll" style="background:#fff;border:1px solid #b0c8e0;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 6px 24px rgba(15,39,64,.15)"><div class="stars">★★★★★</div><p>„Prenova kopalnice z Borisom je bila izvrstna izkušnja. Delo natančno in dobro opravljeno, cene poštene in dostopne. Zanesljiv in prijazen, toplo priporočam!"</p><div class="who"><b>Borut U.</b><br>Primerjam.si</div></div>
+        <div class="review reveal-scroll" style="background:#fff;border:1px solid #b0c8e0;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 6px 24px rgba(15,39,64,.15)"><div class="stars">★★★★★</div><p>„Montiral je bojler, prišel pravočasno, delo opravil v predvidenem času, bojler dela."</p><div class="who"><b>Simon Z.</b><br>4. feb. 2026 &middot; Omisli.si</div></div>
+        <div class="review reveal-scroll" style="background:#fff;border:1px solid #b0c8e0;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 6px 24px rgba(15,39,64,.15)"><div class="stars">★★★★★</div><p>„Cevi so bile postavljene tako, kot mora biti, oziroma po naših željah. Prišel je tako, kot je rekel."</p><div class="who"><b>Aleš B.</b><br>17. feb. 2026 &middot; Omisli.si</div></div>
       </div>
-      <p class="src-note reveal">Ocene in mnenja so povzeti z javnih profilov na <a href="https://omisli.si/boris-opresnik-sp/" target="_blank" rel="noopener">Omisli.si</a>, <a href="https://www.mojmojster.net/izvajalec/instalacije-opresnik" target="_blank" rel="noopener">Mojmojster.net</a> in <a href="https://www.primerjam.si/" target="_blank" rel="noopener">Primerjam.si</a>.</p>
+      <p class="src-note reveal">Ocene in mnenja so povzeti z javnih profilov na <a href="https://omisli.si/boris-opresnik-sp/" target="_blank" rel="noopener">Omisli.si</a>, <a href="https://www.mojmojster.net/izvajalec/instalacije-opresnik" target="_blank" rel="noopener">Mojmojster.net</a> in <a href="https://www.primerjam.si/providers/instalacije-in-ostala-gradbena-dela-bori" target="_blank" rel="noopener">Primerjam.si</a>.</p>
     </div>
   </section>
 </section>
@@ -365,7 +368,7 @@
         <div class="card reveal"><div class="ico">🛁</div><h3>Prenova kopalnic</h3><p>Celotna prenova in nove kopalnice na ključ: rušenje, vodovod, keramika in montaža sanitarne opreme.</p></div>
         <div class="card reveal"><div class="ico">♨️</div><h3>Ogrevanje in toplotne črpalke</h3><p>Centralno ogrevanje, radiatorji, toplotne črpalke zrak-voda ter kotli na pelete, plin ali olje.</p></div>
         <div class="card reveal"><div class="ico">🌡️</div><h3>Talno gretje</h3><p>Vodno in električno talno gretje s sistemskimi ploščami, za bivalne prostore in sanitarije.</p></div>
-        <div class="card reveal"><div class="ico">🔧</div><h3>Strojne inštalacije</h3><p>Kotlovnice pri novogradnji in modernizacije, hidravlično uravnoteženje in montaža centralnega ogrevanja.</p></div>
+        <div class="card reveal"><div class="ico">🔧</div><h3>Strojne inštalacije</h3><p>Novogradnje in modernizacije kotlovnic, hidravlično uravnoteženje in montaža centralnega ogrevanja.</p></div>
         <div class="card reveal"><div class="ico">🚰</div><h3>Vodovod in popravila</h3><p>Vodovod, kanalizacija, priklopi (bojler, pralni stroj), menjava radiatorjev in manjša popravila.</p></div>
         <div class="card reveal"><div class="ico">🧱</div><h3>Keramika in ploščice</h3><p>Talna in stenska keramika za kopalnice, terase in balkone ter obnova fug.</p></div>
       </div>
@@ -376,7 +379,7 @@
       <div class="photo-frame alive reveal"><div class="photo-inner"><img src="images/kopalnica-marmor.jpg" alt="Elegantna kopalnica z marmorno keramiko"></div></div>
       <div class="reveal">
         <h2>Celoten projekt pri enem mojstru</h2>
-        <p>Od rušitve stare kopalnice do zadnje fuge poskrbimo za vse. Svetujemo tudi pri načrtovanju in izbiri materialov, tako da je izvedba usklajena in brez zapletov.</p>
+        <p>Od rušitve stare kopalnice do zadnje fuge; poskrbimo za vse! Svetujemo tudi pri načrtovanju in izbiri materialov, tako da je izvedba usklajena in brez zapletov.</p>
         <a class="btn" href="#kontakt">Povprašajte za ponudbo</a>
       </div>
     </div>
@@ -396,13 +399,13 @@
     <div class="wrap about">
       <div class="reveal">
         <h2>Osebno delo, na katero se lahko zanesete</h2>
-        <p>Inštalacije vodi Boris Oprešnik iz Kamnice. Kot samostojni podjetnik deluje od leta 2013, za seboj pa ima več kot 25 let izkušenj s strojnimi inštalacijami, ogrevanjem in kopalnicami.</p>
+        <p>Inštalacije izvaja Boris Oprešnik iz Kamnice. Kot samostojni podjetnik deluje od leta 2013, za seboj pa ima več kot 25 let izkušenj s strojnimi inštalacijami, ogrevanjem in kopalnicami.</p>
         <p>Delo opravljamo osebno in natančno, s kakovostnimi materiali in poštenim odnosom. Za vsak projekt poskrbimo v celoti, zato veste, na koga se lahko obrnete in kaj lahko pričakujete.</p>
-        <p>Poleg osnovnih del ob prenovah nudimo tudi notranja gradbena dela (prestavitev sten, pleskarska dela) in svetovanje strankam. Zato naš slogan pravi: <b>„Vse za vas pri enem mojstru.“</b></p>
+        <p>Poleg osnovnih del ob prenovah nudimo tudi notranja gradbena dela (prestavitev sten, pleskarska dela) in svetovanje strankam. Zato naš slogan pravi: <b>Vse za vas pri enem mojstru!</b></p>
         <div class="stats">
           <div><b>25+</b><small>let izkušenj</small></div>
           <div><b>2013</b><small>obrt od tega leta</small></div>
-          <div><b>Podravska</b><small>Kamnica in okolica</small></div>
+          <div><b>Podravska</b><small>Podravje in okolica</small></div>
         </div>
       </div>
       <div class="photo-frame alive reveal"><div class="photo-inner"><img src="images/kopalnica-bela.jpg" alt="Prenovljena kopalnica"></div></div>
@@ -423,7 +426,7 @@
       <div class="photo-frame alive reveal"><div class="photo-inner"><img src="images/instalacije-cevi.jpg" alt="Strojne inštalacije"></div></div>
       <div class="reveal">
         <h2>Kakovost, ki se vidi in traja</h2>
-        <p>Delamo s preverjenimi materiali in po pravilih stroke. Rezultat je zanesljiv sistem ogrevanja in kopalnica, ki bo lepa in brezhibna še čez leta.</p>
+        <p>Delamo s preverjenimi materiali in strokovno. Poskrbimo za zanesljiv sistem ogrevanja in kakovostno izvedeno kopalnico, ki bo ostala lepa, funkcionalna in brezhibna še vrsto let.</p>
       </div>
     </div>
   </section>
@@ -445,7 +448,7 @@
     <div class="wrap">
       <div class="tag reveal">Stopite v stik</div>
       <h1 class="reveal">Kontakt</h1>
-      <p class="reveal">Pokličite ali pišite, pa se dogovorimo za ogled in ponudbo.</p>
+      <p class="reveal">Pokličite nas ali nam pišite, da se dogovorimo za ogled in pripravimo ponudbo.</p>
     </div>
   </div>
   <section class="block contact">
@@ -470,7 +473,7 @@
           </div>
           <div class="info-row">
             <div class="ico">🗺️</div>
-            <div><b>Območje dela</b><span>Kamnica in Podravska regija</span></div>
+            <div><b>Območje dela</b><span>Podravska regija</span></div>
           </div>
         </div>
         <form class="reveal" action="mailto:borisopresnik@siol.net" method="post" enctype="text/plain">
@@ -506,7 +509,6 @@
     </div>
     <div class="foot-bottom">
       <span>&copy; 2026 Inštalacije Boris Oprešnik s.p., Kamnica. Vse pravice pridržane.</span>
-      <span>Predstavitveni primer spletne strani</span>
     </div>
   </div>
 </footer>
@@ -567,6 +569,25 @@
   window.addEventListener('hashchange', function(){ showPage((location.hash || '#'+valid[0]).replace('#','')); });
   showPage((location.hash || '#'+valid[0]).replace('#',''));
   setTimeout(updateAlive, 300);
+
+  // Scroll-triggered reveal for review cards
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    var scrollEls = Array.prototype.slice.call(document.querySelectorAll('.reveal-scroll'));
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var el = entry.target;
+          var idx = scrollEls.indexOf(el);
+          el.style.transitionDelay = ((idx % 3) * 0.12) + 's';
+          el.classList.add('is-visible');
+          observer.unobserve(el);
+        }
+      });
+    }, {threshold: 0.15});
+    scrollEls.forEach(function(el){ observer.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal-scroll').forEach(function(el){ el.classList.add('is-visible'); });
+  }
 })();
 </script>
 
