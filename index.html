@@ -70,9 +70,10 @@
   .page.active{display:block}
 
   .hero{position:relative;color:#fff;overflow:hidden;background-color:#091626}
-  .hero::before{content:"";position:absolute;inset:0;z-index:0;background-image:var(--img-hero);background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1);transition:transform 1.6s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .hero-media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform 1.6s cubic-bezier(.22,.61,.36,1);will-change:transform}
   .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,22,38,.62) 0%,rgba(9,22,38,.42) 45%,rgba(9,22,38,.78) 100%)}
-  .hero:hover::before{transform:scale(1.09)}
+  .hero:hover .hero-media img{transform:scale(1.09)}
   .hero .wrap{position:relative;z-index:2;padding:106px 24px 118px}
   .hero h1{font-size:clamp(32px,5vw,54px);line-height:1.1;font-weight:800;max-width:18ch;margin-bottom:18px;text-shadow:0 2px 18px rgba(0,0,0,.4)}
   .hero p{font-size:clamp(17px,2vw,20px);max-width:54ch;opacity:.96;margin-bottom:32px;text-shadow:0 1px 12px rgba(0,0,0,.4)}
@@ -209,7 +210,7 @@
     .photo-inner{transform:none !important}
     .photo-frame img{transform:none !important;transition:none}
     .band-bg{transform:none !important;transition:none}
-    .hero::before,.page-hero::after{transform:none !important;transition:none}
+    .hero-media img,.page-hero::after{transform:none !important;transition:none}
   }
 </style>
 </head>
@@ -251,6 +252,15 @@
 <!-- ============ DOMOV ============ -->
 <section class="page" data-page="domov">
   <div class="hero">
+    <div class="hero-media" aria-hidden="true">
+      <img
+        src="images/kopalnica-marmor.jpg"
+        alt=""
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+      >
+    </div>
     <div class="wrap">
       <span class="eyebrow reveal">Kamnica &middot; Podravska &middot; več kot 25 let izkušenj</span>
       <h1 class="reveal">Strojne inštalacije, ogrevanje in kopalnice na ključ</h1>
